@@ -2,3 +2,64 @@
     margin: 0;
     padding: 0;
 }
+
+html,
+body,
+main {
+    height: 100%;
+    background-color: rgb(242, 242, 242);
+}
+
+.main{
+    
+}
+
+.header{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.headerContent{
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60rem;
+    height: 7rem;
+    
+}
+
+.title{
+    font: 2.5rem 'belanosima', sans-serif;
+    
+}
+
+.newBook{
+    padding: 1rem;
+    background-color: white;
+    font: 700 1.2rem 'roboto';
+    position: relative;
+    outline: none;
+    border: none;
+    outline: 1px solid black;
+    transition: all 0.1s;
+}
+.newBook:hover{
+    translate: -3px -3px;
+    /* box-shadow: 1px 1px 5px rgb(0, 0, 0); */
+    position: relative;
+}
+.newBook:active{
+    background-color: red;
+}
+.buttonWrapper{
+    transition: all 0.1s;
+}
+.buttonWrapper:hover{
+    outline: 1px solid rgb(85, 85, 85);
+    width: 120px;
+    height: 56px;
+    background-color: rgb(228, 228, 228);
+}
+
