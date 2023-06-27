@@ -9,7 +9,9 @@ main {
     height: 100%;
     background-color: rgb(242, 242, 242);
 }
-
+:root {
+    --red: rgb(255, 0 0);
+}
 .main{
     background-color: black;
     position: relative;
@@ -127,7 +129,10 @@ input{
 }
 .read{
     width: 1.5rem;
+    accent-color: red;
+    border: 1px solid black;
+    border-radius: 0.3rem;
 }
-.read:checked + .checkmark{
+.read:checked {
     background-color: red;
 }
