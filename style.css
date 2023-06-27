@@ -76,7 +76,7 @@ main {
     transform: translate(-50%, -50%);
     z-index: 9999;
     border-radius: 1rem;
-    /* display: none; */
+    display: none;
 }
 .overlay {
     background-color: rgba(0, 0, 0, 0.22);
@@ -115,6 +115,15 @@ form .readField {
 input{
     font: 1.3rem 'roboto';
     padding: 0.2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(235, 235, 235);
+    border: none;
+    height: 1.9rem;
+}
+input:focus {
+    outline: 2px solid rgb(0, 0, 0);
+    background-color: rgb(239, 239, 239);
+    box-shadow: 3px 3px 3px rgb(166, 166, 166);
 }
 .add {
     height: 3rem;
@@ -123,16 +132,31 @@ input{
     border-radius: 1rem;
     border: none;
     background-color: rgb(226, 226, 226);
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
+    transition: all 0.1s;
 }
 .add:hover {
     background-color: rgb(188, 188, 188);
+    translate: -1px -1px;
+    box-shadow: 2px 2px 1px rgb(0, 0, 0);
+}
+.add:active {
+    background-color: red;
+    translate: 1px 1px;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 .read{
     width: 1.5rem;
     accent-color: red;
     border: 1px solid black;
     border-radius: 0.3rem;
+    outline: none !important;
+    box-shadow: none !important;
+}
+[for="read"] {
+    margin-top: 0.1rem;
 }
 .read:checked {
     background-color: red;
+    
 }
