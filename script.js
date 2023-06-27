@@ -11,7 +11,13 @@ function appendForm() {
     global.classList.add("overlay");
 }
 
-
+document.addEventListener('click', e => {
+  if (!formContainer.contains(e.target) && !newBook.contains(e.target)) {
+    console.log(e.target)
+    formContainer.classList.remove("show")
+    global.classList.remove("overlay")
+  }
+})
 
 addBook.addEventListener('click', addBookToLibrary)
 
