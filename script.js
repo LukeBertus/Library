@@ -3,6 +3,8 @@ const newBook = document.querySelector(".newBook")
 const global = document.querySelector(".global")
 const formContainer = document.querySelector(".formContainer")
 const addBook = document.querySelector(".add")
+const content = document.querySelector(".content")
+
 
 newBook.addEventListener('click', appendForm)
 
@@ -21,11 +23,17 @@ document.addEventListener('click', e => {
 
 addBook.addEventListener('click', addBookToLibrary)
 
-let myLibrary = [];
 
-function Book() {
-  // the constructor...
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
+
+let myLibrary = [];
+let bookCount = 0;
 
 function addBookToLibrary(event) {
   event.preventDefault();
@@ -40,13 +48,47 @@ function addBookToLibrary(event) {
   let pages = pagesInput.value
   let readStatus = readInput.value
 
+  let book = new Book(title, author, pages, readStatus)
+  console.log(book)
+  myLibrary[bookCount] = book
+  console.log(myLibrary)
+  bookCount++;
+
+  displayBooks()
+
+  //cleanup
   formContainer.classList.remove("show")
   global.classList.remove("overlay")
 }
 
 function displayBooks () {
+  myLibrary.forEach(e => {
+    const container  = document.createElement('div')
 
-}
+    const title = document.createElement('p')
+    title.classList.add("bookTitle")
+    title.textContent = e.title
+
+    const author = document.createElement('p')
+    author.classList.add("bookAuthor")
+    author.textContent = "By " + e.author
+
+    const pages = document.createElement('p')
+    pages.classList.add("bookpages")
+    pages.textContent = "Pages: " + e.pages
+
+    const read = document.createElement('input')
+    read.classList.add("bookReadStatus")
+    
+    content.appendChild(container)
+    container.appendChild(title)
+    container.appendChild(author)
+    container.appendChild(pages)
+    
+  })
+
+  }
+
 
 function generateBook() {
 

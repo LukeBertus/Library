@@ -7,15 +7,17 @@ html,
 body,
 main {
     height: 100%;
+    max-height: 100% !important;
     background-color: rgb(242, 242, 242);
 }
 :root {
     --red: rgb(255, 0 0);
 }
 .main{
-    background-color: black;
+    
     position: relative;
     z-index: 2;
+  
 }
 
 .header{
@@ -159,4 +161,9 @@ input:focus {
 .read:checked {
     background-color: red;
     
+}
+.content {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(auto-fill, minmax(20rem, 1fr));
+    height: 80%;
 }
