@@ -14,6 +14,29 @@
 </head>
 <body>
     <div class="global"></div>
+    <div class="formContainer">
+        <p class="formTitle">New Book:</p>
+        <form action="">
+            <div class="field">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="field">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="field">
+                <label for="pages">Pages</label>
+                <input type="text" id="pages" name="pages">
+            </div>
+            <div class="field readField">
+                <label for="read">Read</label>
+                <input type="checkbox" id="read" name="read" class="read">
+                <span class="checkmark"></span>
+            </div>
+            <button type="submit" class="add">Add to Library</button>
+        </form>
+    </div>
     <div class="main">
         <div class="header">
             <div class="headerContent">
@@ -23,8 +46,9 @@
                 </div>
             </div>
         </div>
-        <div class="body"></div>
-        
+        <div class="body">
+           
+        </div>
     </div>
 </body>
 </html>

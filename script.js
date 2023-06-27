@@ -1,13 +1,12 @@
 const body = document.querySelector("body")
 const newBook = document.querySelector(".newBook")
 const global = document.querySelector(".global")
+const formContainer = document.querySelector(".formContainer")
 
 newBook.addEventListener('click', appendForm)
 
 function appendForm() {
-    let formContainer = document.createElement('div');
-    formContainer.classList.add("formContainer")
-    body.appendChild(formContainer);
+    formContainer.classList.add("show");
     global.classList.add("overlay");
 }
 

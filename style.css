@@ -65,7 +65,7 @@ main {
     background-color: rgb(146, 146, 146);
 }
 .formContainer{
-    height:  40rem;
+    height:  35rem;
     width: 30rem;
     background-color: rgb(255, 255, 255);
     position: fixed;
@@ -74,6 +74,7 @@ main {
     transform: translate(-50%, -50%);
     z-index: 9999;
     border-radius: 1rem;
+    /* display: none; */
 }
 .overlay {
     background-color: rgba(0, 0, 0, 0.22);
@@ -82,4 +83,51 @@ main {
     width: 100%;
     z-index: 100;
     transition: all 0.1s ease;
+}
+.show {
+    display: block !important;
+}
+.formTitle {
+    font: 400 2rem 'belanosima', sans-serif;
+    margin: 1.5rem 0 0.5rem 2rem;
+}
+form {
+    display: grid;
+    grid-template: repeat(3, 2fr) 1fr 2fr/ 1fr;
+    height: 85%;
+    align-items: center;
+    justify-items: center;
+    margin: 0 2rem;
+}
+.field {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+    font: 700 1.5rem 'roboto';
+    width: 22rem;
+}
+form .readField {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.8rem;
+}
+input{
+    font: 1.3rem 'roboto';
+    padding: 0.2rem;
+}
+.add {
+    height: 3rem;
+    width: 17rem;
+    font: 700 1.5rem 'roboto';
+    border-radius: 1rem;
+    border: none;
+    background-color: rgb(226, 226, 226);
+}
+.add:hover {
+    background-color: rgb(188, 188, 188);
+}
+.read{
+    width: 1.5rem;
+}
+.read:checked + .checkmark{
+    background-color: red;
 }
