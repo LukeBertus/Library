@@ -64,6 +64,7 @@ function addBookToLibrary(event) {
 function displayBooks () {
   myLibrary.forEach(e => {
     const container  = document.createElement('div')
+    container.classList.add("container")
 
     const title = document.createElement('p')
     title.classList.add("bookTitle")
@@ -77,13 +78,22 @@ function displayBooks () {
     pages.classList.add("bookpages")
     pages.textContent = "Pages: " + e.pages
 
-    const read = document.createElement('input')
-    read.classList.add("bookReadStatus")
+    const readStatus = document.createElement('label')
+    const readCheckbox = document.createElement('input')
+    readStatus.classList.add("bookReadStatus")
+    readCheckbox.classList.add("bookReadCheckbox")
+    readStatus.textContent = "Read:"
+    readCheckbox.id = "checkbox"
+    readStatus.for = "checkbox"
+    readCheckbox.type = "checkbox"
     
     content.appendChild(container)
     container.appendChild(title)
     container.appendChild(author)
     container.appendChild(pages)
+    container.appendChild(readStatus)
+    container.appendChild(readCheckbox)
+    
     
   })
 
@@ -91,5 +101,9 @@ function displayBooks () {
 
 
 function generateBook() {
-
+  let book = new Book("Harry Potter", "J.K.R", 463, "on")
+  myLibrary[0] = book
+  displayBooks();
 }
+
+generateBook();
