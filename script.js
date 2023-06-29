@@ -63,6 +63,9 @@ function addBookToLibrary(event) {
 
 function displayBooks () {
   myLibrary.forEach(e => {
+    let pageText = document.body.innerText
+    console.log(pageText.includes(e.title))
+    if (!pageText.includes(e.title)) {
     const container  = document.createElement('div')
     container.classList.add("container")
     container.classList.add('container' + (myLibrary.indexOf(e)+1))
@@ -121,7 +124,9 @@ function displayBooks () {
       container.remove();
       myLibrary.splice(myLibrary.indexOf(e), 1)
     })
+  }
   })
+
 
   }
 
