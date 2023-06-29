@@ -65,8 +65,11 @@ function displayBooks () {
   myLibrary.forEach(e => {
     const container  = document.createElement('div')
     container.classList.add("container")
+    container.classList.add('container' + (myLibrary.indexOf(e)+1))
 
     const title = document.createElement('p')
+    const backgroundColor = document.createElement('div')
+    backgroundColor.classList.add("backgroundColor")
     title.classList.add("bookTitle")
     title.textContent = e.title
 
@@ -78,8 +81,11 @@ function displayBooks () {
     pages.classList.add("bookpages")
     pages.textContent = "Pages: " + e.pages
 
+
+    const readContainer = document.createElement('div')
     const readStatus = document.createElement('label')
     const readCheckbox = document.createElement('input')
+    readContainer.classList.add("readContainer")
     readStatus.classList.add("bookReadStatus")
     readCheckbox.classList.add("bookReadCheckbox")
     readStatus.textContent = "Read:"
@@ -87,14 +93,34 @@ function displayBooks () {
     readStatus.for = "checkbox"
     readCheckbox.type = "checkbox"
     
+    const iconContainer = document.createElement('div')
+    iconContainer.classList.add('iconContainer')
+    const edit = document.createElement('img')
+    edit.setAttribute('src', 'images/file-edit.svg')
+    edit.classList.add('edit')
+    const trash = document.createElement('img')
+    trash.classList.add('trash')
+    trash.classList.add('trash' + (myLibrary.indexOf(e)+1))
+
+    trash.src = "images/trash-can.svg"
+
     content.appendChild(container)
-    container.appendChild(title)
+    container.appendChild(backgroundColor)
+    backgroundColor.appendChild(title)
     container.appendChild(author)
     container.appendChild(pages)
-    container.appendChild(readStatus)
-    container.appendChild(readCheckbox)
-    
-    
+    container.appendChild(readContainer)
+    readContainer.appendChild(readStatus)
+    readContainer.appendChild(readCheckbox)
+    container.appendChild(iconContainer)
+    iconContainer.appendChild(edit)
+    iconContainer.appendChild(trash)
+    console.log(myLibrary.indexOf(e))
+
+    trash.addEventListener('click', e => {
+      container.remove();
+      myLibrary.splice(myLibrary.indexOf(e), 1)
+    })
   })
 
   }
@@ -107,3 +133,4 @@ function generateBook() {
 }
 
 generateBook();
+

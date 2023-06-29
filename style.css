@@ -168,13 +168,56 @@ form .readField {
     height: 80%;
 }
 .container{
-    margin: 5rem;
+    margin: 2.5rem;
     background-color: white;
+    display: grid;
+    grid-template: repeat(4, 1fr) 3rem / 1fr;
+    align-items: center;
+    justify-items: center;
+    border-radius: 2rem;
+    box-shadow: 1px 1px 5px rgb(160, 160, 160);
 }
+.backgroundColor{
+    background-color: rgb(213, 213, 213);
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem 2rem 0 0;
+    display: grid;
+}
+
 .bookTitle{
-    font: 700 1.2rem 'roboto';
+    font: 700 1.7rem 'ubuntu';
+    align-self: center;
+    justify-self: center;
 }
-.bookAuthor{}
-.bookpages{}
-.bookReadStatus{}
-.bookReadCheckbox{}
+.bookAuthor{
+    font: 400 1.3rem 'roboto';
+    color: rgb(78, 78, 78);
+}
+.bookpages{
+    font: 400 1.3rem 'roboto';
+    color: rgb(78, 78, 78);
+}
+.readContainer{}
+.bookReadStatus{
+    font: 400 1.3rem 'roboto';
+    color: rgb(78, 78, 78);
+}
+.bookReadCheckbox{
+    margin-left: 1rem;
+}
+.iconContainer{
+    height: 100%;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.edit{
+    height: 100%;
+    width: 2rem;
+}
+.trash{
+    height: 100%;
+    width: 2rem;
+}
