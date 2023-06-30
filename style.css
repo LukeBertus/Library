@@ -204,7 +204,12 @@ form .readField {
     color: rgb(78, 78, 78);
 }
 .bookReadCheckbox{
+    position: relative;
+    top: 0.1rem;
     margin-left: 1rem;
+    accent-color: red;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 .iconContainer{
     height: 100%;

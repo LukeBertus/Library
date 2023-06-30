@@ -15,7 +15,6 @@ function appendForm() {
 
 document.addEventListener('click', e => {
   if (!formContainer.contains(e.target) && !newBook.contains(e.target)) {
-    console.log(e.target)
     formContainer.classList.remove("show")
     global.classList.remove("overlay")
   }
@@ -49,9 +48,9 @@ function addBookToLibrary(event) {
   let readStatus = readInput.value
 
   let book = new Book(title, author, pages, readStatus)
-  console.log(book)
+  
   myLibrary[bookCount] = book
-  console.log(myLibrary)
+ 
   bookCount++;
 
   displayBooks()
@@ -59,12 +58,16 @@ function addBookToLibrary(event) {
   //cleanup
   formContainer.classList.remove("show")
   global.classList.remove("overlay")
+  titleInput.value = ""
+  authorInput.value = ""
+  pagesInput.value = ""
+  readInput.checked = false;
 }
 
 function displayBooks () {
   myLibrary.forEach(e => {
     let pageText = document.body.innerText
-    console.log(pageText.includes(e.title))
+  
     if (!pageText.includes(e.title)) {
     const container  = document.createElement('div')
     container.classList.add("container")
@@ -118,7 +121,7 @@ function displayBooks () {
     container.appendChild(iconContainer)
     iconContainer.appendChild(edit)
     iconContainer.appendChild(trash)
-    console.log(myLibrary.indexOf(e))
+    
 
     trash.addEventListener('click', e => {
       container.remove();
