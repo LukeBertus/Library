@@ -45,15 +45,15 @@ function addBookToLibrary(event) {
   let title = titleInput.value 
   let author = authorInput.value
   let pages = pagesInput.value
-  let readStatus = readInput.value
-
+  let readStatus = readInput.checked
+  
   let book = new Book(title, author, pages, readStatus)
   
   myLibrary[bookCount] = book
  
   bookCount++;
 
-  displayBooks()
+  displayBooks(readStatus)
 
   //cleanup
   formContainer.classList.remove("show")
@@ -64,7 +64,7 @@ function addBookToLibrary(event) {
   readInput.checked = false;
 }
 
-function displayBooks () {
+function displayBooks (input) {
   myLibrary.forEach(e => {
     let pageText = document.body.innerText
   
@@ -98,6 +98,8 @@ function displayBooks () {
     readCheckbox.id = "checkbox"
     readStatus.for = "checkbox"
     readCheckbox.type = "checkbox"
+    console.log(input)
+    if (input) readCheckbox.checked = true;
     
     const iconContainer = document.createElement('div')
     iconContainer.classList.add('iconContainer')
