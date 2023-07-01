@@ -5,26 +5,26 @@ const formContainer = document.querySelector(".formContainer")
 const addBook = document.querySelector(".add")
 const content = document.querySelector(".content")
 const edit = document.querySelector(".edit")
-
+const formTitle = document.querySelector(".formTitle")
 
 newBook.addEventListener('click', appendForm)
 
 function appendForm() {
-    formContainer.classList.add("show");
-    global.classList.add("overlay");
+    setTimeout( e => {
+    formContainer.classList.add("show")
+    global.classList.add("overlay")
+    }, 1)
 }
 
 document.addEventListener('click', e => {
-  console.log(e.target)
-  if (!formContainer.contains(e.target) && !newBook.contains(e.target) && !(e.target === '<img src="images/file-edit.svg" class="edit">')) {
+  if (!formContainer.contains(e.target) && global.classList.contains("overlay")) {
     formContainer.classList.remove("show")
     global.classList.remove("overlay")
+    formTitle.textContent = "New Book"
   }
 })
 
 addBook.addEventListener('click', addBookToLibrary)
-
-
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -59,8 +59,6 @@ function addBookToLibrary(event) {
 
   //cleanup
   formContainer.classList.remove("show")
-  
-  console.log("hit")
   global.classList.remove("overlay")
   titleInput.value = ""
   authorInput.value = ""
@@ -68,7 +66,6 @@ function addBookToLibrary(event) {
   readInput.checked = false;
   
   const editList = document.querySelectorAll('.edit')
-  console.log(editList[editList.length-1])
   const edit = editList[editList.length-1]
   const containerList = document.querySelectorAll('.container')
   
@@ -76,15 +73,14 @@ function addBookToLibrary(event) {
   edit.addEventListener('click', e => {
     container.remove();
     myLibrary.splice(myLibrary.indexOf(e), 1)
-    
-   
 
     titleInput.value = title
     authorInput.value = author
     pagesInput.value = pages
     readInput.checked = readStatus
-    formContainer.classList.add("show")
-    console.log(formContainer)
+    formTitle.textContent = "Edit Book"
+    appendForm()
+    
     
   })
 }
@@ -112,7 +108,6 @@ function displayBooks (input) {
     pages.classList.add("bookpages")
     pages.textContent = "Pages: " + e.pages
 
-
     const readContainer = document.createElement('div')
     const readStatus = document.createElement('label')
     const readCheckbox = document.createElement('input')
@@ -137,7 +132,6 @@ function displayBooks (input) {
 
     trash.src = "images/trash-can.svg"
 
-
     content.appendChild(container)
     container.appendChild(backgroundColor)
     backgroundColor.appendChild(title)
@@ -149,26 +143,16 @@ function displayBooks (input) {
     container.appendChild(iconContainer)
     iconContainer.appendChild(edit)
     iconContainer.appendChild(trash)
+    formTitle.textContent = "New Book"
     
-
     trash.addEventListener('click', e => {
       container.remove();
       myLibrary.splice(myLibrary.indexOf(e), 1)
     })
-
-    
   }
   })
-
-
-  }
-
-
-function generateBook() {
-  let book = new Book("Harry Potter", "J.K.R", 463, "on")
-  myLibrary[0] = book
-  displayBooks();
 }
 
-generateBook();
+
+
 
