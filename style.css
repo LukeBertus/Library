@@ -88,7 +88,8 @@ main {
     z-index: 100;
     transition: all 0.1s ease;
 }
-.show {
+.show,
+.show2 {
     display: block !important;
 }
 .formTitle {
@@ -180,15 +181,23 @@ form .readField {
 .backgroundColor{
     background-color: rgb(213, 213, 213);
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     border-radius: 2rem 2rem 0 0;
     display: grid;
+    max-width: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .bookTitle{
     font: 700 1.7rem 'ubuntu';
     align-self: center;
     justify-self: center;
+    max-width: 100%;
+    overflow: none;
+    text-align: center;
+    
 }
 .bookAuthor{
     font: 400 1.3rem 'roboto';

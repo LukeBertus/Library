@@ -4,6 +4,7 @@ const global = document.querySelector(".global")
 const formContainer = document.querySelector(".formContainer")
 const addBook = document.querySelector(".add")
 const content = document.querySelector(".content")
+const edit = document.querySelector(".edit")
 
 
 newBook.addEventListener('click', appendForm)
@@ -14,7 +15,8 @@ function appendForm() {
 }
 
 document.addEventListener('click', e => {
-  if (!formContainer.contains(e.target) && !newBook.contains(e.target)) {
+  console.log(e.target)
+  if (!formContainer.contains(e.target) && !newBook.contains(e.target) && !(e.target === '<img src="images/file-edit.svg" class="edit">')) {
     formContainer.classList.remove("show")
     global.classList.remove("overlay")
   }
@@ -46,7 +48,7 @@ function addBookToLibrary(event) {
   let author = authorInput.value
   let pages = pagesInput.value
   let readStatus = readInput.checked
-  
+
   let book = new Book(title, author, pages, readStatus)
   
   myLibrary[bookCount] = book
@@ -57,11 +59,34 @@ function addBookToLibrary(event) {
 
   //cleanup
   formContainer.classList.remove("show")
+  
+  console.log("hit")
   global.classList.remove("overlay")
   titleInput.value = ""
   authorInput.value = ""
   pagesInput.value = ""
   readInput.checked = false;
+  
+  const editList = document.querySelectorAll('.edit')
+  console.log(editList[editList.length-1])
+  const edit = editList[editList.length-1]
+  const containerList = document.querySelectorAll('.container')
+  
+  const container = containerList[containerList.length - 1]
+  edit.addEventListener('click', e => {
+    container.remove();
+    myLibrary.splice(myLibrary.indexOf(e), 1)
+    
+   
+
+    titleInput.value = title
+    authorInput.value = author
+    pagesInput.value = pages
+    readInput.checked = readStatus
+    formContainer.classList.add("show")
+    console.log(formContainer)
+    
+  })
 }
 
 function displayBooks (input) {
@@ -98,7 +123,7 @@ function displayBooks (input) {
     readCheckbox.id = "checkbox"
     readStatus.for = "checkbox"
     readCheckbox.type = "checkbox"
-    console.log(input)
+    
     if (input) readCheckbox.checked = true;
     
     const iconContainer = document.createElement('div')
@@ -111,6 +136,7 @@ function displayBooks (input) {
     trash.classList.add('trash' + (myLibrary.indexOf(e)+1))
 
     trash.src = "images/trash-can.svg"
+
 
     content.appendChild(container)
     container.appendChild(backgroundColor)
@@ -129,6 +155,8 @@ function displayBooks (input) {
       container.remove();
       myLibrary.splice(myLibrary.indexOf(e), 1)
     })
+
+    
   }
   })
 
